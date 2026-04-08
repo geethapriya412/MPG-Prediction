@@ -1,0 +1,31 @@
+Auto MPG Prediction — Production ML API
+---------------------------------------
+Built an end-to-end machine learning regression system to predict vehicle fuel efficiency (MPG) from automobile specifications using the UCI Auto MPG dataset. 
+
+Performed data cleaning, missing-value handling, and feature preparation, then trained and evaluated a Linear Regression model using R² and RMSE metrics. 
+
+Packaged preprocessing and model logic into a reusable ML pipeline to ensure consistent transformations between training and inference. 
+
+Deployed the trained pipeline as a production-ready REST API with FastAPI, enabling real-time predictions via validated JSON inputs and interactive API documentation. 
+
+Designed the solution following MLOps best practices including artifact versioning, reproducible preprocessing, and scalable model serving.
+
+Tech Stack: Python, scikit-learn, Pandas, FastAPI, Pipeline, Joblib, REST API
+Key Skills Demonstrated: Regression modeling, feature engineering, pipeline design, model evaluation, API deployment, production ML workflow
+
+
+
+
+train.py
+app.py
+uvicorn app:app --reload
+http://127.0.0.1:8000/docs
+{
+  "cylinders": 4,
+  "displacement": 120.0,
+  "horsepower": 95.0,
+  "weight": 2500,
+  "acceleration": 15.0,
+  "model_year": 76,
+  "origin": 1
+}

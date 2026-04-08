@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MPG Predictor</title>
+</head>
+<body>
+    <h2>Car MPG Prediction</h2>
+
+    <input id="cylinders" placeholder="Cylinders"><br>
+    <input id="displacement" placeholder="Displacement"><br>
+    <input id="horsepower" placeholder="Horsepower"><br>
+    <input id="weight" placeholder="Weight"><br>
+    <input id="acceleration" placeholder="Acceleration"><br>
+    <input id="model_year" placeholder="Model Year"><br>
+    <input id="origin" placeholder="Origin"><br>
+
+    <button onclick="predict()">Predict</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        async function predict() {
+            let data = {
+                cylinders: parseInt(document.getElementById("cylinders").value),
+                displacement: parseFloat(document.getElementById("displacement").value),
+                horsepower: parseFloat(document.getElementById("horsepower").value),
+                weight: parseFloat(document.getElementById("weight").value),
+                acceleration: parseFloat(document.getElementById("acceleration").value),
+                model_year: parseInt(document.getElementById("model_year").value),
+                origin: parseInt(document.getElementById("origin").value)
+            };
+
+            let response = await fetch("http://127.0.0.1:8000/predict", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data)
+            });
+
+            let result = await response.json();
+            document.getElementById("result").innerText = "MPG: " + result.predicted_mpg;
+        }
+    </script>
+</body>
+</html>
